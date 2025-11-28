@@ -26,9 +26,10 @@ sales = [
     {"branch": "Mombasa", "item": "Tablet", "category": "Electronics",
      "price": 310, "quantity": 2, "discount": 0.00, "date": "2025-01-06"},
 ]
+#Unique items
 unique_items= {sale["item"] for sale in sales}
 print(unique_items)
-
+# Total net revenue per item
 item_net_revenue = {
     item: sum(
         (sale["price"] * sale["quantity"]) * (1 - sale["discount"])
@@ -37,3 +38,7 @@ item_net_revenue = {
     for item in unique_items
 }
 print(item_net_revenue)
+#High performing items
+top_items = [item for item, rev in item_net_revenue.items() if rev > 2000]
+
+print(top_items)
